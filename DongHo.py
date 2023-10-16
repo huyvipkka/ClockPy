@@ -32,3 +32,9 @@ class clock():
             self.__hour -= 12
         pygame.draw.line(surface, WHITE, radius, (300 + 120*math.sin(30*math.pi/180*self.__hour + (math.pi/6*self.__minute/60)), 
                                                  (250 - 120*math.cos(30*math.pi/180*self.__hour + (math.pi/6*self.__minute/60)))), 3)
+    
+    def draw_time_bar(self, surface, width):
+        font = pygame.font.SysFont("Lucida Sans", 50)
+        img = font.render(f'{self.__hour}:{self.__minute}:{self.__second}', True, 'white')
+        rect_txt = img.get_rect()
+        surface.blit(img, (width //2 - rect_txt.width//2, 500))
